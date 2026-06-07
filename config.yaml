@@ -1,0 +1,58 @@
+# BadGraph Configuration
+# ========================
+# Fill in API credentials to enable LLM-driven generation.
+
+llm:
+  # OpenAI-compatible API endpoint
+  api_base_url: "https://api.openai.com/v1"
+  
+  # Your API key
+  api_key: "YOUR_API_KEY_HERE"
+  
+  # Model name
+  model_name: "gpt-4o-mini"
+
+  # Model for TKPA/UKPA analysis and rewriting.
+  attack_model_name: "gpt-4o"
+
+  # Embedding model used by TKPA/UKPA scoring.
+  embedding_model_name: "text-embedding-3-small"
+  
+  # Temperature for generation (0.0 = deterministic, 1.0 = creative)
+  temperature: 0.7
+
+  # Enable LLM calls in the workflow when credentials are configured.
+  use_anchor_prediction: true
+  use_text_generation: true
+
+attack:
+  # Attack budget as a fraction of total graph edges
+  # 0.005 = 0.5% of edges
+  budget_ratio: 0.005
+  
+  # Number of distractor nodes per seed (Trap Component)
+  num_distractors: 3
+  
+  # Number of leaf nodes per distractor (Trap Component density)
+  num_leaves_per_distractor: 5
+
+  # Fraction of structural edges assigned to Confusion Component bridge relations
+  # when the target retriever uses MS-GraphRAG local search.
+  bridge_budget_ratio: 0.10
+  
+  # Anchor nodes for Confusion Component bridge relations
+  # These should be high-degree hub nodes in the target knowledge graph
+  bridge_anchors:
+    - "UNITED STATES"
+    - "AUSTRALIA"
+    - "ENGLAND"
+    - "CALIFORNIA"
+    - "NEW YORK CITY"
+
+# Output settings
+output:
+  # Directory for generated attack documents
+  documents_dir: "output/attack_documents"
+  
+  # Directory for attack logs
+  logs_dir: "output/logs"

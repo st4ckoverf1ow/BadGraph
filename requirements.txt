@@ -1,0 +1,9 @@
+networkx>=3.0
+numpy>=1.24
+python-igraph>=0.11
+tqdm>=4.65
+pyyaml>=6.0
+openai>=1.0
+httpx>=0.24
+jupyter>=1.0.0
+notebook>=7.0.0
