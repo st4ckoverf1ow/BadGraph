@@ -26,6 +26,12 @@ llm:
   use_text_generation: true
 
 attack:
+  # Neutral linker-document generation mode:
+  # - "prompted_generation": use the BadGraph prompts when credentials are
+  #   configured; otherwise fall back to a local catalogue-style generator.
+  # - "static_template": directly use a static neutral linker-document template.
+  linker_document_mode: "prompted_generation"
+
   # Attack budget as a fraction of total graph edges
   # 0.005 = 0.5% of edges
   budget_ratio: 0.005
